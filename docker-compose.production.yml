@@ -14,9 +14,8 @@ services:
   backend:
     image: shifaka/kittygram_backend
     env_file: .env
-    command: cp -r /app/build/. /backend_static/
     volumes:
-      - static:/backend_static
+      - static:/static
       - media:/app/media
   frontend:
     env_file: .env
@@ -30,5 +29,5 @@ services:
     ports:
       - 9000:80
     volumes:
-      - static:/staticfiles/
-      - media:/app/media/
+      - static:/static
+      - media:/app/media
