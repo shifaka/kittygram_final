@@ -10,7 +10,7 @@ SECRET_KEY = os.getenv('SECRET_KEY', default='secret_key')
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-DEBUG = str(os.getenv('DEBUG')).lower() == 'true'
+DEBUG = str(os.getenv('DEBUG', default=False)).lower() == 'true'
 
 ALLOWED_HOSTS = os.getenv('ALLOWED_HOSTS', default='localhost').split()
 
@@ -38,25 +38,6 @@ MIDDLEWARE = [
 ]
 
 ROOT_URLCONF = 'kittygram_backend.urls'
-
-LOGGING = {
-    "version": 1,
-    "disable_existing_loggers": False,
-    "handlers": {
-        "file": {
-            "level": "DEBUG",
-            "class": "logging.FileHandler",
-            "filename": "debug.log",
-        },
-    },
-    "loggers": {
-        "django": {
-            "handlers": ["file"],
-            "level": "DEBUG",
-            "propagate": True,
-        },
-    },
-}
 
 TEMPLATES = [
     {
